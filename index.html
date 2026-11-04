@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise Shopping Cart Experience</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="cart-wrapper">
+      <div class="cart-container">
+        
+        <!-- HEADER -->
+        <header class="cart-header">
+          <div class="header-title-group">
+            <h1>Shopping Cart</h1>
+            <span class="item-count-badge" id="itemCount">3 items</span>
+          </div>
+          <button class="clear-cart-btn" id="clearCartBtn" title="Clear all items">
+            <i class="fa-solid fa-trash-can"></i> Clear Cart
+          </button>
+        </header>
+
+        <!-- EMPTY STATE -->
+        <div class="empty-state" id="emptyCart" style="display: none;">
+          <div class="empty-icon-wrapper">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <h3>Your cart is empty</h3>
+          <p>Looks like you haven't added anything to your cart yet.</p>
+          <button class="shop-now-btn" id="shopNowBtn">Start Shopping</button>
+        </div>
+
+        <!-- CART ITEMS LIST -->
+        <section class="cart-items" id="cartItems">
+          <!-- Item 1 -->
+          <article class="cart-item" data-id="1">
+            <div class="item-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop" alt="Wireless Headphones" />
+            </div>
+            <div class="item-details">
+              <h3>Wireless Headphones</h3>
+              <p class="item-meta">Color: Matte Black • Wireless</p>
+              <div class="item-price-mobile">$99.99</div>
+            </div>
+            <div class="item-price-desktop">$99.99</div>
+            <div class="quantity-controls" aria-label="Quantity controls">
+              <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <span class="quantity">1</span>
+              <button class="qty-btn" data-action="increase" aria-label="Increase quantity">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+            <div class="item-total">$99.99</div>
+            <button class="remove-btn" aria-label="Remove item">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="cart-item" data-id="2">
+            <div class="item-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop" alt="Smart Watch" />
+            </div>
+            <div class="item-details">
+              <h3>Smart Watch</h3>
+              <p class="item-meta">Edition: Series 5 • Silver</p>
+              <div class="item-price-mobile">$199.99</div>
+            </div>
+            <div class="item-price-desktop">$199.99</div>
+            <div class="quantity-controls" aria-label="Quantity controls">
+              <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <span class="quantity">2</span>
+              <button class="qty-btn" data-action="increase" aria-label="Increase quantity">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+            <div class="item-total">$399.98</div>
+            <button class="remove-btn" aria-label="Remove item">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="cart-item" data-id="3">
+            <div class="item-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop" alt="Running Shoes" />
+            </div>
+            <div class="item-details">
+              <h3>Pro Running Shoes</h3>
+              <p class="item-meta">Size: US 10 • Red/Black</p>
+              <div class="item-price-mobile">$19.99</div>
+            </div>
+            <div class="item-price-desktop">$19.99</div>
+            <div class="quantity-controls" aria-label="Quantity controls">
+              <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <span class="quantity">1</span>
+              <button class="qty-btn" data-action="increase" aria-label="Increase quantity">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+            <div class="item-total">$19.99</div>
+            <button class="remove-btn" aria-label="Remove item">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </article>
+        </section>
+
+        <!-- CART SUMMARY -->
+        <section class="cart-summary" id="cartSummary">
+          <div class="promo-code-section">
+            <input type="text" placeholder="Promo code" id="promoInput" />
+            <button id="applyPromoBtn">Apply</button>
+          </div>
+          <p class="promo-message" id="promoMessage"></p>
+
+          <div class="summary-details">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">$519.96</span>
+            </div>
+            <div class="summary-row">
+              <span>Estimated Shipping</span>
+              <span id="shippingCost">$10.00</span>
+            </div>
+            <div class="summary-row discount-row" id="discountRow" style="display: none;">
+              <span>Discount (<span id="discountPercentage">0</span>%)</span>
+              <span id="discountAmount">-$0.00</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="total">$529.96</span>
+            </div>
+          </div>
+
+          <button class="checkout-btn" id="checkoutBtn">
+            <span>Proceed to Checkout</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          
+          <div class="security-badge">
+            <i class="fa-solid fa-shield-halved"></i> Secure 256-bit SSL Encryption
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </body>
+</html>
